@@ -17,7 +17,7 @@ docker compose -f (Join-Path $root "Server/Docker-compose.yml") up --build -d
 
 Write-Host ""
 Write-Host "Services:" -ForegroundColor Green
-Write-Host "  Admin  -> http://localhost:8081"
-Write-Host "  Client -> http://localhost:8082"
-Write-Host "  API    -> http://localhost:8000"
-Write-Host "  Server -> http://localhost:8083"
+Write-Host "  Admin  -> http://localhost:8066"
+Write-Host "  Client -> http://localhost:8067"
+Write-Host "  API    -> http://localhost:8068"
+Write-Host "  Server -> http://localhost:8069"

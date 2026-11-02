@@ -4,10 +4,10 @@ This project runs four services with Docker Compose:
 
 | Service | Description          | URL                     |
 | ------- | -------------------- | ----------------------- |
-| admin   | Flutter web admin app | http://localhost:8081   |
-| client  | Flutter web client app| http://localhost:8082   |
-| api     | nginx API entry page  | http://localhost:8000   |
-| server  | Python HTTP server    | http://localhost:8083   |
+| admin   | Flutter web admin app | http://localhost:8066   |
+| client  | Flutter web client app| http://localhost:8067   |
+| api     | nginx API entry page  | http://localhost:8068   |
+| server  | Python HTTP server    | http://localhost:8069   |
 
 ## Run all services
 

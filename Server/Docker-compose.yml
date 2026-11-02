@@ -3,15 +3,36 @@ name: network_admin_system
 services:
   admin:
     build:
-      context: ./admin
+      context: ../admin
       dockerfile: Dockerfile
-    container_name: Noem_Netra
+    container_name: gtr_admin
     ports:
       - "8066:80"
+    restart: unless-stopped
+
   client:
     build:
-      context: ./client
+      context: ../client
       dockerfile: Dockerfile
-    container_name: Noem_Netra
+    container_name: gtr_client
     ports:
       - "8067:80"
+    restart: unless-stopped
+
+  api:
+    build:
+      context: ../api
+      dockerfile: Dockerfile
+    container_name: gtr_api
+    ports:
+      - "8068:80"
+    restart: unless-stopped
+
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: gtr_server
+    ports:
+      - "8069:8080"
+    restart: unless-stopped
