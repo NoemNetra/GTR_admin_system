@@ -20,4 +20,4 @@ Write-Host "Services:" -ForegroundColor Green
 Write-Host "  Admin  -> http://localhost:8081"
 Write-Host "  Client -> http://localhost:8082"
 Write-Host "  API    -> http://localhost:8000"
-Write-Host "  Server -> http://localhost:8080"
+Write-Host "  Server -> http://localhost:8083"
