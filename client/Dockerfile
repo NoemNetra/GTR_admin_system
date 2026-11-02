@@ -1,1 +1,5 @@
 FROM nginx:stable-alpine
+RUN rm -rf /usr/share/nginx/html/*
+COPY ./BUILD /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
