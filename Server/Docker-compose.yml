@@ -1,31 +1,17 @@
-name: gtr_admin_system
+name: network_admin_system
 
 services:
-  server:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - "8083:8080"
-
-  api:
-    build:
-      context: ../api
-      dockerfile: Dockerfile
-    ports:
-      - "8000:80"
-
   admin:
     build:
-      context: ../admin
+      context: ./admin
       dockerfile: Dockerfile
+    container_name: Noem_Netra
     ports:
-      - "8081:80"
-
+      - "8066:80"
   client:
     build:
-      context: ../client
+      context: ./client
       dockerfile: Dockerfile
+    container_name: Noem_Netra
     ports:
-      - "8082:80"
-      
+      - "8067:80"
