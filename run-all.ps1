@@ -1,23 +1,27 @@
-# Build both Flutter web apps and start every service with Docker Compose.
-$ErrorActionPreference = "Stop"
-$root = Split-Path -Parent $MyInvocation.MyCommand.Path
 
-Write-Host "Building admin Flutter web app..." -ForegroundColor Cyan
-Push-Location (Join-Path $root "admin")
-flutter build web --release
-Pop-Location
+Write-Host "Starting Netra System..." -ForegroundColor Cyan
 
-Write-Host "Building client Flutter web app..." -ForegroundColor Cyan
-Push-Location (Join-Path $root "client")
-flutter build web --release
-Pop-Location
+$composeFile = Join-Path $PSScriptRoot "Server\docker-compose.yml"
 
-Write-Host "Starting all services..." -ForegroundColor Cyan
-docker compose -f (Join-Path $root "Server/Docker-compose.yml") up --build -d
+if (!(Test-Path $composeFile)) {
+    Write-Host "Docker Compose file not found: $composeFile" -ForegroundColor Red
+    exit 1
+}
 
-Write-Host ""
-Write-Host "Services:" -ForegroundColor Green
-Write-Host "  Admin  -> http://localhost:8066"
-Write-Host "  Client -> http://localhost:8067"
-Write-Host "  API    -> http://localhost:8068"
-Write-Host "  Server -> http://localhost:8069"
+docker compose -f $composeFile up --build -d
+
+if ($LASTEXITCODE -ne 0) {
+    Write-Host "Docker failed to start!" -ForegroundColor Red
+    exit 1
+}
+
+Write-Host "Waiting for services..." -ForegroundColor Yellow
+Start-Sleep -Seconds 5
+
+docker compose -f $composeFile ps
+
+Start-Process "http://localhost:8066"
+Start-Process "http://localhost:8067"
+
+Write-Host "Admin: http://localhost:8066" -ForegroundColor Green
+Write-Host "Client: http://localhost:8067" -ForegroundColor Green

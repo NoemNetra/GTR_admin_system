@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         fontFamily: 'Arial',
         colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color.fromARGB(255, 18, 224, 62),
+          seedColor: const Color.fromARGB(255, 9, 213, 53),
         ),
         scaffoldBackgroundColor: const Color(0xFFF8FAFC),
       ),
